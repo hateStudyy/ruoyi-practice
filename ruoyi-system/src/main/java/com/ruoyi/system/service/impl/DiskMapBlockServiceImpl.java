@@ -1,6 +1,8 @@
 package com.ruoyi.system.service.impl;
 
 import com.ruoyi.system.domain.DiskMapBlock;
+import com.ruoyi.system.domain.dto.DiskMapBlockRequest;
+import com.ruoyi.system.domain.vo.DiskMapBlockVo;
 import com.ruoyi.system.mapper.DiskMapBlockMapper;
 import com.ruoyi.system.service.DiskMapBlockService;
 import org.springframework.stereotype.Service;
@@ -40,7 +42,7 @@ public class DiskMapBlockServiceImpl implements DiskMapBlockService {
      * @return 查询结果
      */
     @Override
-    public Page<DiskMapBlock> queryByPage(DiskMapBlock diskMapBlock, PageRequest pageRequest) {
+    public Page<DiskMapBlockVo> queryByPage(DiskMapBlockRequest diskMapBlock, PageRequest pageRequest) {
         long total = this.diskMapBlockMapper.count(diskMapBlock);
         return new PageImpl<>(this.diskMapBlockMapper.queryAllByLimit(diskMapBlock, pageRequest), pageRequest, total);
     }

@@ -2,6 +2,8 @@ package com.ruoyi.web.controller.system;
 
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.system.domain.DiskMapBlock;
+import com.ruoyi.system.domain.dto.DiskMapBlockRequest;
+import com.ruoyi.system.domain.vo.DiskMapBlockVo;
 import com.ruoyi.system.service.DiskMapBlockService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -37,9 +39,9 @@ public class DiskMapBlockController {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @ApiOperation(value = "分页查询", notes = "分页查询", httpMethod = "GET")
-    @GetMapping
-    public ResponseEntity<Page<DiskMapBlock>> queryByPage(DiskMapBlock diskMapBlock, PageRequest pageRequest) {
+    @ApiOperation(value = "分页查询", notes = "分页查询", httpMethod = "Post")
+    @PostMapping
+    public ResponseEntity<Page<DiskMapBlockVo>> queryByPage(DiskMapBlockRequest diskMapBlock, PageRequest pageRequest) {
         return ResponseEntity.ok(this.diskMapBlockService.queryByPage(diskMapBlock, pageRequest));
     }
 

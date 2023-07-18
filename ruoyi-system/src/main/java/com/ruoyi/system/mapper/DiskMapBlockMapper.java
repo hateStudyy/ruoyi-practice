@@ -1,6 +1,8 @@
 package com.ruoyi.system.mapper;
 
 import com.ruoyi.system.domain.DiskMapBlock;
+import com.ruoyi.system.domain.dto.DiskMapBlockRequest;
+import com.ruoyi.system.domain.vo.DiskMapBlockVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
 
@@ -29,7 +31,7 @@ public interface DiskMapBlockMapper {
      * @param pageable         分页对象
      * @return 对象列表
      */
-    List<DiskMapBlock> queryAllByLimit(DiskMapBlock diskMapBlock, @Param("pageable") Pageable pageable);
+    List<DiskMapBlockVo> queryAllByLimit(DiskMapBlockRequest diskMapBlock, @Param("pageable") Pageable pageable);
 
     /**
      * 统计总行数
@@ -37,7 +39,7 @@ public interface DiskMapBlockMapper {
      * @param diskMapBlock 查询条件
      * @return 总行数
      */
-    long count(DiskMapBlock diskMapBlock);
+    long count(DiskMapBlockRequest diskMapBlock);
 
     /**
      * 新增数据

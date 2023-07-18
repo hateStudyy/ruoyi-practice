@@ -1,9 +1,9 @@
-package com.ruoyi.system.domain;
+package com.ruoyi.system.domain.vo;
 
 import lombok.Data;
 
-import java.util.Date;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 任务详细信息表(DiskMapBlock)实体类
@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @since 2023-07-14 16:19:40
  */
 @Data
-public class DiskMapBlock implements Serializable {
+public class DiskMapBlockVo implements Serializable {
     private static final long serialVersionUID = 376503756131473571L;
     /**
      * 唯一id
@@ -34,23 +34,6 @@ public class DiskMapBlock implements Serializable {
      * 国际名称
      */
     private String nationName;
-    /**
-     * 描述
-     */
-    private String description;
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-    /**
-     * 是否删除
-     */
-    private Integer isDelete;
-
 
 }
 

@@ -2,6 +2,8 @@ package com.ruoyi.system.service;
 
 
 import com.ruoyi.system.domain.DiskMapBlock;
+import com.ruoyi.system.domain.dto.DiskMapBlockRequest;
+import com.ruoyi.system.domain.vo.DiskMapBlockVo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
@@ -28,7 +30,7 @@ public interface DiskMapBlockService {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    Page<DiskMapBlock> queryByPage(DiskMapBlock diskMapBlock, PageRequest pageRequest);
+    Page<DiskMapBlockVo> queryByPage(DiskMapBlockRequest diskMapBlock, PageRequest pageRequest);
 
     /**
      * 新增数据

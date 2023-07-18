@@ -22,34 +22,16 @@
     </select>
 
     <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="DiskMapBlockMap">
+    <select id="queryAllByLimit">
         select
-          id, picture, name, nation_name, description, create_time, update_time, is_delete
+          id, picture, name, code, nation_name
         from disk_map_block
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="picture != null and picture != ''">
-                and picture = #{picture}
-            </if>
             <if test="name != null and name != ''">
-                and name = #{name}
+                and name like concat('%', #{name} ,'%')
             </if>
-            <if test="nationName != null and nationName != ''">
-                and nation_name = #{nationName}
-            </if>
-            <if test="description != null and description != ''">
-                and description = #{description}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="updateTime != null">
-                and update_time = #{updateTime}
-            </if>
-            <if test="isDelete != null">
-                and is_delete = #{isDelete}
+            <if test="code != null and code != ''">
+                and code = #{code}
             </if>
         </where>
         limit #{pageable.offset}, #{pageable.pageSize}
@@ -60,29 +42,11 @@
         select count(1)
         from disk_map_block
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="picture != null and picture != ''">
-                and picture = #{picture}
-            </if>
             <if test="name != null and name != ''">
-                and name = #{name}
+                and name like concat('%', #{name} ,'%')
             </if>
-            <if test="nationName != null and nationName != ''">
-                and nation_name = #{nationName}
-            </if>
-            <if test="description != null and description != ''">
-                and description = #{description}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="updateTime != null">
-                and update_time = #{updateTime}
-            </if>
-            <if test="isDelete != null">
-                and is_delete = #{isDelete}
+            <if test="code != null and code != ''">
+                and code = #{code}
             </if>
         </where>
     </select>
