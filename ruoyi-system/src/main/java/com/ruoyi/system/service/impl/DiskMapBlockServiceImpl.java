@@ -1,7 +1,11 @@
 package com.ruoyi.system.service.impl;
 
+import com.ruoyi.common.utils.bean.BeanUtils;
 import com.ruoyi.system.domain.DiskMapBlock;
+import com.ruoyi.system.domain.dto.DiskMapBlockAddRequest;
 import com.ruoyi.system.domain.dto.DiskMapBlockRequest;
+import com.ruoyi.system.domain.dto.DiskMapBlockUpdateRequest;
+import com.ruoyi.system.domain.vo.DiskMapBlockUpdateVo;
 import com.ruoyi.system.domain.vo.DiskMapBlockVo;
 import com.ruoyi.system.mapper.DiskMapBlockMapper;
 import com.ruoyi.system.service.DiskMapBlockService;
@@ -11,6 +15,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 任务详细信息表(DiskMapBlock)表服务实现类
@@ -30,7 +35,7 @@ public class DiskMapBlockServiceImpl implements DiskMapBlockService {
      * @return 实例对象
      */
     @Override
-    public DiskMapBlock queryById(Long id) {
+    public DiskMapBlockUpdateVo queryById(Long id) {
         return this.diskMapBlockMapper.queryById(id);
     }
 
@@ -54,9 +59,11 @@ public class DiskMapBlockServiceImpl implements DiskMapBlockService {
      * @return 实例对象
      */
     @Override
-    public DiskMapBlock insert(DiskMapBlock diskMapBlock) {
-        this.diskMapBlockMapper.insert(diskMapBlock);
-        return diskMapBlock;
+    public int insert(DiskMapBlockAddRequest diskMapBlockAddRequest) {
+        DiskMapBlock diskMapBlock = new DiskMapBlock();
+        BeanUtils.copyBeanProp(diskMapBlock, diskMapBlockAddRequest);
+        int insert = this.diskMapBlockMapper.insert(diskMapBlock);
+        return insert;
     }
 
     /**
@@ -66,7 +73,7 @@ public class DiskMapBlockServiceImpl implements DiskMapBlockService {
      * @return 实例对象
      */
     @Override
-    public DiskMapBlock update(DiskMapBlock diskMapBlock) {
+    public DiskMapBlockUpdateVo update(DiskMapBlockUpdateRequest diskMapBlock) {
         this.diskMapBlockMapper.update(diskMapBlock);
         return this.queryById(diskMapBlock.getId());
     }
@@ -80,5 +87,10 @@ public class DiskMapBlockServiceImpl implements DiskMapBlockService {
     @Override
     public boolean deleteById(Long id) {
         return this.diskMapBlockMapper.deleteById(id) > 0;
+    }
+
+    @Override
+    public List<DiskMapBlockVo> selectDiskMapBlock(DiskMapBlockRequest diskMapBlockRequest) {
+        return diskMapBlockMapper.selectDiskMapBlock(diskMapBlockRequest);
     }
 }

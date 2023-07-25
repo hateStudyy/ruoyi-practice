@@ -4,15 +4,15 @@ use `ry-vue`;
 -- ----------------------------
 create table if not exists DISK_MAP_BLOCK
 (
-    id          bigint(20) primary key             not null comment '唯一id',
-    code        varchar(250)                       not null comment '编码',
-    picture     varchar(120)                       null comment '图纸',
-    name        varchar(200)                       not null comment '名称',
-    nation_name varchar(200)                       not null comment '国际名称',
-    description varchar(250)                       null comment '描述',
-    create_time datetime default CURRENT_TIMESTAMP not null comment '创建时间',
-    update_time datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
-    is_delete   tinyint  default 0                 not null comment '是否删除',
+    id          bigint(20) primary key auto_increment not null comment '唯一id',
+    code        varchar(250)                          not null comment '编码',
+    picture     varchar(120)                          null comment '图纸',
+    name        varchar(200)                          not null comment '名称',
+    nation_name varchar(200)                          not null comment '国际名称',
+    description varchar(250)                          null comment '描述',
+    create_time datetime default CURRENT_TIMESTAMP    not null comment '创建时间',
+    update_time datetime default CURRENT_TIMESTAMP    not null on update CURRENT_TIMESTAMP comment '更新时间',
+    is_delete   tinyint  default 0                    not null comment '是否删除',
     index code_index (code)
 ) engine = innodb comment = '任务详细信息表';
 

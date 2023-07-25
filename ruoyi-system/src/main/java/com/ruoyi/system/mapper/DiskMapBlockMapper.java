@@ -1,7 +1,10 @@
 package com.ruoyi.system.mapper;
 
 import com.ruoyi.system.domain.DiskMapBlock;
+import com.ruoyi.system.domain.dto.DiskMapBlockAddRequest;
 import com.ruoyi.system.domain.dto.DiskMapBlockRequest;
+import com.ruoyi.system.domain.dto.DiskMapBlockUpdateRequest;
+import com.ruoyi.system.domain.vo.DiskMapBlockUpdateVo;
 import com.ruoyi.system.domain.vo.DiskMapBlockVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
@@ -22,7 +25,7 @@ public interface DiskMapBlockMapper {
      * @param id 主键
      * @return 实例对象
      */
-    DiskMapBlock queryById(Long id);
+    DiskMapBlockUpdateVo queryById(Long id);
 
     /**
      * 查询指定行数据
@@ -72,7 +75,7 @@ public interface DiskMapBlockMapper {
      * @param diskMapBlock 实例对象
      * @return 影响行数
      */
-    int update(DiskMapBlock diskMapBlock);
+    int update(DiskMapBlockUpdateRequest diskMapBlock);
 
     /**
      * 通过主键删除数据
@@ -82,5 +85,11 @@ public interface DiskMapBlockMapper {
      */
     int deleteById(Long id);
 
+    /**
+     * 查询所有数据
+     * @param diskMapBlockRequest
+     * @return
+     */
+    List<DiskMapBlockVo> selectDiskMapBlock(DiskMapBlockRequest diskMapBlockRequest);
 }
 

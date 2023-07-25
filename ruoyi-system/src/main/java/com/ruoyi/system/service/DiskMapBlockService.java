@@ -2,10 +2,15 @@ package com.ruoyi.system.service;
 
 
 import com.ruoyi.system.domain.DiskMapBlock;
+import com.ruoyi.system.domain.dto.DiskMapBlockAddRequest;
 import com.ruoyi.system.domain.dto.DiskMapBlockRequest;
+import com.ruoyi.system.domain.dto.DiskMapBlockUpdateRequest;
+import com.ruoyi.system.domain.vo.DiskMapBlockUpdateVo;
 import com.ruoyi.system.domain.vo.DiskMapBlockVo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+
+import java.util.List;
 
 /**
  * 任务详细信息表(DiskMapBlock)表服务接口
@@ -21,7 +26,7 @@ public interface DiskMapBlockService {
      * @param id 主键
      * @return 实例对象
      */
-    DiskMapBlock queryById(Long id);
+    DiskMapBlockUpdateVo queryById(Long id);
 
     /**
      * 分页查询
@@ -38,7 +43,7 @@ public interface DiskMapBlockService {
      * @param diskMapBlock 实例对象
      * @return 实例对象
      */
-    DiskMapBlock insert(DiskMapBlock diskMapBlock);
+    int insert(DiskMapBlockAddRequest diskMapBlock);
 
     /**
      * 修改数据
@@ -46,7 +51,7 @@ public interface DiskMapBlockService {
      * @param diskMapBlock 实例对象
      * @return 实例对象
      */
-    DiskMapBlock update(DiskMapBlock diskMapBlock);
+    DiskMapBlockUpdateVo update(DiskMapBlockUpdateRequest diskMapBlock);
 
     /**
      * 通过主键删除数据
@@ -56,4 +61,10 @@ public interface DiskMapBlockService {
      */
     boolean deleteById(Long id);
 
+    /**
+     * 查询所有数据
+     * @param diskMapBlockRequest dto
+     * @return  DiskMapBlockVo
+     */
+    List<DiskMapBlockVo> selectDiskMapBlock(DiskMapBlockRequest diskMapBlockRequest);
 }
